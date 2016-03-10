@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CoordinatorLayout coordinatorLayout;
 
     /**
@@ -63,7 +63,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 .setAction("Update Now", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Home.this, ProfileUpdate.class);
+                        Intent intent = new Intent(HomeActivity.this, ProfileUpdate.class);
                         startActivity(intent);
                     }
                 });
@@ -92,7 +92,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, LogCall.class);
+                Intent intent = new Intent(HomeActivity.this, LogCall.class);
                 startActivity(intent);
             }
         });

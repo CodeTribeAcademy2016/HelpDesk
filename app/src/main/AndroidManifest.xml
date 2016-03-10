@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="za.co.codetribe.helpdesk">
+    package="za.co.codetribe.userhelpdesk">
 
     <application
         android:allowBackup="true"
@@ -8,23 +8,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".helpdesk.MainActivity">
+        <activity android:name="za.co.codetribe.userhelpdesk.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".helpdesk.LoginActivity" />
+        <activity android:name="za.co.codetribe.userhelpdesk.LoginActivity" />
         <activity
-            android:name=".helpdesk.Home"
+            android:name="za.co.codetribe.userhelpdesk.Home"
             android:label="Help Desk"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".helpdesk.ProfileUpdate"
+            android:name="za.co.codetribe.userhelpdesk.ProfileUpdate"
             android:label="Profile Update" />
         <activity
-            android:name=".helpdesk.LogCall"
+            android:name="za.co.codetribe.userhelpdesk.LogCall"
             android:label="Call Log"></activity>
     </application>
 
