@@ -1,4 +1,4 @@
-package com.example.user.userhelpdesk;
+package za.co.codetribe.helpdesk;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

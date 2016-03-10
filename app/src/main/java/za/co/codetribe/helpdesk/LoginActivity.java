@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.userhelpdesk.R;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

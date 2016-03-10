@@ -1,4 +1,4 @@
-package za.co.codetribe.helpdesk.za.co.codetribe.helpdesk.test;
+package za.co.codetribe.helpdesk;
 
 import org.junit.Test;
 

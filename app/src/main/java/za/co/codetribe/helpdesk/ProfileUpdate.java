@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.user.userhelpdesk.R;
-
 public class ProfileUpdate extends AppCompatActivity {
 
     @Override
