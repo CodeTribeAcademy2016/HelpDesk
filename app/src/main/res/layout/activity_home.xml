@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:backgroundTint="@color/colorPrimaryDark"
-    tools:context="za.co.codetribe.helpdesk.Home">
+    tools:context=".Home">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

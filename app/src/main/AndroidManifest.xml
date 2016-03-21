@@ -8,24 +8,28 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="za.co.codetribe.userhelpdesk.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="za.co.codetribe.userhelpdesk.LoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
-            android:name="za.co.codetribe.userhelpdesk.Home"
+            android:name=".Home"
             android:label="Help Desk"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="za.co.codetribe.userhelpdesk.ProfileUpdate"
+            android:name=".ProfileUpdate"
             android:label="Profile Update" />
         <activity
-            android:name="za.co.codetribe.userhelpdesk.LogCall"
-            android:label="Call Log"></activity>
+            android:name=".LogCall"
+            android:label="Call Log" />
+        <activity
+            android:name=".helpdeskadmin.MainAdmin"
+            android:label="@string/title_activity_main_admin"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

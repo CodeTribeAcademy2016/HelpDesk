@@ -1,4 +1,4 @@
-package za.co.codetribe.helpdesk;
+package za.co.codetribe.userhelpdesk;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -51,8 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme);
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Logging in...");
         progressDialog.show();

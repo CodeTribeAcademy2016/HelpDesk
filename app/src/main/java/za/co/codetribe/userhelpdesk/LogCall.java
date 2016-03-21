@@ -1,4 +1,4 @@
-package za.co.codetribe.helpdesk;
+package za.co.codetribe.userhelpdesk;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,14 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class LogCall extends AppCompatActivity {
     Spinner spinner;
     ImageView img;
+
+
 
 
 
