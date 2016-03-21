@@ -1,8 +1,12 @@
 package za.co.codetribe.userhelpdesk.helpdesktech.adapter;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import za.co.codetribe.userhelpdesk.helpdesktech.Tab1;
+import za.co.codetribe.userhelpdesk.helpdesktech.Tab2;
+import za.co.codetribe.userhelpdesk.helpdesktech.Tab3;
 
 /**
  * Created by kgundula on 16/03/21.
