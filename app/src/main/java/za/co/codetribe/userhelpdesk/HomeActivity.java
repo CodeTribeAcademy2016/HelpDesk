@@ -1,4 +1,4 @@
-package za.co.codetribe.helpdesk;
+package za.co.codetribe.userhelpdesk;
 
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
