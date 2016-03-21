@@ -1,4 +1,4 @@
-package za.co.codetribe.userhelpdesk;
+package za.co.codetribe.helpdesk;
 
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
@@ -35,6 +35,8 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CoordinatorLayout coordinatorLayout;
+
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
