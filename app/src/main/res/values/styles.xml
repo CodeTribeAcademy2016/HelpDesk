@@ -10,7 +10,7 @@
         <item name="colorControlActivated">#2196F3</item>
         <item name="colorControlHighlight">#EC407A</item>
         <item name="android:textColorHint">#EC407A</item>
-        <item name="colorButtonNormal">#8BC34A</item>
+        <item name="colorButtonNormal">#FF9800</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
 

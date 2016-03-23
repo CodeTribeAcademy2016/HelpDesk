@@ -35,7 +35,7 @@ public class ProfileUpdate extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
        if (id == android.R.id.home)
         {
-            Intent intent = new Intent(this, Home.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         }
 
