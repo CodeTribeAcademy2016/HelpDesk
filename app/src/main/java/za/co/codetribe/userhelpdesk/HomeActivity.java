@@ -35,7 +35,7 @@ import java.util.List;
 
 
 /**
- * practicing GIT
+ * Practicing GIT
  */
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CoordinatorLayout coordinatorLayout;
