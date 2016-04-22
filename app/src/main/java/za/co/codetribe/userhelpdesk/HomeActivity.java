@@ -40,7 +40,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CoordinatorLayout coordinatorLayout;
 
-
+int tsego = 0;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
