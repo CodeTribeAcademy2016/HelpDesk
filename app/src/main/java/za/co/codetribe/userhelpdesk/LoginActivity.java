@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import za.co.codetribe.userhelpdesk.transfer.ResponseDTO;
 import za.co.codetribe.userhelpdesk.utils.Constants;
 import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
 
@@ -87,8 +89,18 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("Ygritte", json_pay);
 
                     String res = helpOkHttp.post(Constants.helpDeskUrl+"?JSON="+json_pay, json_pay);
+
+                    JSONObject jsonObject = new JSONObject(res);
+
+                    String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
+                    String statusCode = jsonObject.getString("statusCode");
+                    //String breakPoint = jsonObject.ge
+                    //ResponseDTO dto = new ResponseDTO(res);
                     //Your code goes here
-                    Log.i("Ygritte",res);
+                    Log.i("Tshego u the main man",res);
+
+
+
 
                 }
                 catch (Exception e)
