@@ -78,11 +78,14 @@ public class LoginActivity extends AppCompatActivity {
         final HelpOkHttp helpOkHttp = new HelpOkHttp();
         Log.i("Ygrite", "You know nothing Jon Snow!!");
 
+
         Thread thread = new Thread(new Runnable()
         {
             @Override
             public void run()
             {
+
+
                 try
                 {
                     Log.i("Ygritte", Constants.helpDeskUrl);
@@ -92,12 +95,27 @@ public class LoginActivity extends AppCompatActivity {
 
                     JSONObject jsonObject = new JSONObject(res);
 
-                    String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
+
                     String statusCode = jsonObject.getString("statusCode");
+                    //String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
+
+                    if (statusCode == "0")
+                    {
+
+
+                        showToast("Login Failed");
+
+                    }
+                    else
+                    {
+                        showToast("Login Success");
+
+
+                    }
                     //String breakPoint = jsonObject.ge
                     //ResponseDTO dto = new ResponseDTO(res);
                     //Your code goes here
-                    Log.i("Tshego u the main man",res);
+                    Log.i("Tshego ;)",res);
 
 
 
@@ -111,6 +129,8 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         thread.start();
+
+
 
         //System.out.println(response);
 
@@ -197,5 +217,25 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    public void showToast(final String toast)
+    {
+        runOnUiThread(new Runnable() {
+            public void run()
+            {
+                Toast.makeText(LoginActivity.this, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void navigateAc(final String toast)
+    {
+        runOnUiThread(new Runnable() {
+            public void run()
+            {
+                Toast.makeText(LoginActivity.this, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
