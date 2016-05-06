@@ -10,7 +10,7 @@ public class Constants {
     public static String email = "email";
     public static String password = "password";
 
-    public static String helpDeskUrl = "http://10.50.129.64:8080/hda/Admin";
+    public static String helpDeskUrl = "http://146.64.85.44:8080/hda/Admin";
 
 
     public static final int REGISTER_ADMIN = 100;       //Done
