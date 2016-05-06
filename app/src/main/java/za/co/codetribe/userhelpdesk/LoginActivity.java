@@ -129,6 +129,10 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
+                                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,R.style.AppTheme);
+                                progressDialog.setIndeterminate(true);
+                                progressDialog.setMessage("Logging in...");
+                                progressDialog.show();
 
                                 Intent intent = new Intent (LoginActivity.this, MainAdmin.class);
                                 startActivity(intent);
