@@ -6,13 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">#808080</item>
-        <item name="colorControlActivated">#2196F3</item>
-        <item name="colorControlHighlight">#EC407A</item>
-        <item name="android:textColorHint">#EC407A</item>
-        <item name="colorButtonNormal">#FF9800</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:actionOverflowButtonStyle">@color/colorOverFlow</item>
 
     </style>
 

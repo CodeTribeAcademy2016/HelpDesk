@@ -227,6 +227,20 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="#01579B"/>
 
+        <Button
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="View Contacts"
+            android:textAllCaps="true"
+            android:background="#FF9800"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#01579B"
+            android:id="@+id/btnView" />
+
 
     </LinearLayout>
 </ScrollView>

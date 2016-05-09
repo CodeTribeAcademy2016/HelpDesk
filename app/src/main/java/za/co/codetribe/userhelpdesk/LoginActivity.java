@@ -24,7 +24,6 @@ import java.io.IOException;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
-import za.co.codetribe.userhelpdesk.transfer.ResponseDTO;
 import za.co.codetribe.userhelpdesk.utils.Constants;
 import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
 
