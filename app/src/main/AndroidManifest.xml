@@ -27,8 +27,12 @@
         <activity
             android:name=".helpdeskadmin.MainAdmin"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".helpdesktech.TechMain"
+            android:label="@string/title_activity_tech_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PasswordRecovery"></activity>
     </application>
 
 </manifest>
