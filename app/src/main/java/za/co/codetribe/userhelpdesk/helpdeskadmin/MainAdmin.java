@@ -3,6 +3,7 @@ package za.co.codetribe.userhelpdesk.helpdeskadmin;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.json.JSONObject;
 
 import za.co.codetribe.userhelpdesk.R;
 
@@ -34,6 +38,32 @@ public class MainAdmin extends AppCompatActivity
             }
         });
 
+
+
+        String administratorDTO = getIntent().getExtras().getString("AdminDTO");
+        String companyDTO = getIntent().getExtras().getString("CompanyDTO");
+
+
+
+        try {
+
+            JSONObject objAdmin = new JSONObject(administratorDTO);
+            JSONObject objCompany = new JSONObject(companyDTO);
+
+            Log.d("My App", objAdmin.toString());
+            Log.d("My App", objCompany.toString());
+
+            TextView profileName = (TextView) findViewById(R.id.txtProfileName);
+            profileName.setText(objAdmin.getString("firstName").toString() + " " + objAdmin.getString("lastName").toString());
+
+            TextView profileEmail = (TextView) findViewById(R.id.txtProfileEmail);
+            profileEmail.setText("Email.....");
+
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + t + "\"");
+
+        }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -42,6 +72,9 @@ public class MainAdmin extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
     }
 
     @Override
@@ -98,6 +131,28 @@ public class MainAdmin extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        String administratorDTO = getIntent().getExtras().getString("AdminDTO");
+        String companyDTO = getIntent().getExtras().getString("CompanyDTO");
+
+        try {
+
+            JSONObject objAdmin = new JSONObject(administratorDTO);
+            JSONObject objCompany = new JSONObject(companyDTO);
+
+            Log.d("My App", objAdmin.toString());
+            Log.d("My App", objCompany.toString());
+
+            TextView profileName = (TextView) findViewById(R.id.txtProfileName);
+            profileName.setText(objAdmin.getString("firstName").toString() + " " + objAdmin.getString("lastName").toString());
+
+            TextView profileEmail = (TextView) findViewById(R.id.txtProfileEmail);
+            profileEmail.setText(objAdmin.getString("email").toString());
+
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + t + "\"");
+
+        }
         return true;
     }
 }

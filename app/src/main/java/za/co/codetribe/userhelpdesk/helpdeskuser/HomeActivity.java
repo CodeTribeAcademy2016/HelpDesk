@@ -1,4 +1,4 @@
-package za.co.codetribe.userhelpdesk;
+package za.co.codetribe.userhelpdesk.helpdeskuser;
 
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
@@ -32,6 +32,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import za.co.codetribe.userhelpdesk.ProfileUpdate;
+import za.co.codetribe.userhelpdesk.R;
 
 
 /**

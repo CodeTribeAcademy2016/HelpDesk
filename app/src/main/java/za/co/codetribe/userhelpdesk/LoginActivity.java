@@ -1,11 +1,8 @@
 package za.co.codetribe.userhelpdesk;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,16 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
-import za.co.codetribe.userhelpdesk.helpdesktech.TechMain;
+import za.co.codetribe.userhelpdesk.helpdeskuser.HomeActivity;
 import za.co.codetribe.userhelpdesk.utils.Constants;
 import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
 
@@ -126,22 +120,43 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else if(Integer.parseInt(statusCode) == 100)
                     {
-                        JSONObject administrator = jsonObject.getJSONObject("administratoDTO");
-                        JSONObject company  = jsonObject.getJSONObject("companyDTO");
-                        String first_name = administrator.getString("firstName");
-                        String userType = jsonObject.getString("userType");
+                        String userType = jsonObject.getString("userType").toString();
+
+                        if(jsonObject.getString("userType").equals("Administrator"))//userType == "Administrator")
+                        {
+                            JSONObject administrator = jsonObject.getJSONObject("administratoDTO");
+                            JSONObject company = jsonObject.getJSONObject("companyDTO");
+                            final String first_name = administrator.getString("firstName");
+
+                            final String administratorDTO = jsonObject.getJSONObject("administratoDTO").toString();
+                            final String companyDTO = jsonObject.getJSONObject("companyDTO").toString();
 
 
-                        showToast("Login Success "+statusCode+" My Name is : "+first_name);
 
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+                            showToast("Login Success " + statusCode + " My Name is : " + first_name);
 
-                                Intent intent = new Intent (LoginActivity.this, MainAdmin.class);
-                                startActivity(intent);
-                            }
-                        },1000);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    Intent intent = new Intent(LoginActivity.this, MainAdmin.class);
+                                    intent.putExtra("AdminDTO", administratorDTO);
+                                    intent.putExtra("CompanyDTO", companyDTO);
+
+                                    startActivity(intent);
+                                }
+                            }, 1000);
+                        }
+                        else if (jsonObject.getString("userType").equals("Technician"))//userType == "Technician")
+                        {
+                            showToast("Login Success for Technician, StatusCode: " + statusCode );
+
+                        }
+                        else if (jsonObject.getString("userType").equals("User"))//userType == "User")
+                        {
+                            showToast("Login Success for User, StatusCode: " + statusCode );
+
+                        }
 
 
 

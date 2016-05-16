@@ -1,4 +1,4 @@
-package za.co.codetribe.userhelpdesk;
+package za.co.codetribe.userhelpdesk.helpdeskuser;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import za.co.codetribe.userhelpdesk.R;
 
 public class LogCall extends AppCompatActivity {
     Spinner spinner;
