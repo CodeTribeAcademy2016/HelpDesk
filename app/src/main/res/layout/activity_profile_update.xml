@@ -18,8 +18,8 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:src="@drawable/noks"
-            android:layout_width="wrap_content"
+            android:src="@drawable/ic_launcher"
+            android:layout_width="301dp"
             android:layout_height="200dp"
             android:layout_marginBottom="15dp"
             android:layout_gravity="fill"
