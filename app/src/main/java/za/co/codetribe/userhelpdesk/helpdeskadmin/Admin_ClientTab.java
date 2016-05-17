@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.user.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.R;
+
 
 public class Admin_ClientTab extends AppCompatActivity {
 
