@@ -6,9 +6,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="title_activity_main_admin">MainAdmin</string>
-    <string name="title_activity_admin__assignment_tab">Admin_AssignmentTab</string>
-    <string name="title_activity_admin__call_log_tab">Admin_CallLogTab</string>
-    <string name="title_activity_admin__technician_tab">Admin_TechnicianTab</string>
-    <string name="title_activity_admin__client_tab">Admin_ClientTab</string>
-    <string name="title_activity_admin__user_tab">Admin_UserTab</string>
+    <string name="title_activity_tech_main">TechMain</string>
 </resources>

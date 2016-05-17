@@ -1,11 +1,8 @@
 package za.co.codetribe.userhelpdesk;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,24 +12,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
+import za.co.codetribe.userhelpdesk.helpdeskuser.HomeActivity;
 import za.co.codetribe.userhelpdesk.utils.Constants;
 import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
 
 public class LoginActivity extends AppCompatActivity {
 
 
+
+
+    /*EditText emailText = (EditText) findViewById(R.id.input_email) ;
+    EditText passwordText = (EditText) findViewById(R.id.input_password);
+    Button loginButton = (Button)findViewById(R.id.btn_login);*/
+
     @Bind(R.id.input_email) EditText emailText;
     @Bind(R.id.input_password) EditText passwordText;
     @Bind(R.id.btn_login) Button loginButton;
+
     TextView signupLink;
 
 
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         final String password = passwordText.getText().toString();
 
         String json_payload = "";
+        Log.i("Ygritte", user_email);
 
         try {
             json_payload = new JSONObject()
@@ -88,8 +91,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 try
                 {
-                    //Log.i("Ygritte", Constants.helpDeskUrl);
-                    //Log.i("Ygritte", json_pay);
+                    Log.i("Ygritte", Constants.helpDeskUrl);
+                    Log.i("Ygritte", Constants.helpDeskUrl+"?JSON="+json_pay);
 
                     String res = helpOkHttp.post(Constants.helpDeskUrl+"?JSON="+json_pay, json_pay);
                     /*
@@ -100,24 +103,66 @@ public class LoginActivity extends AppCompatActivity {
                     *     "message":"Administrator has login successfully",
                     *     "requestType":0}
                     * */
-                    JSONObject jsonObject = new JSONObject(res);
+                    JSONObject jsonObject = new JSONObject(res.trim());
                     Log.i("Ygritte", res);
 
 
-                    JSONObject administrator = jsonObject.getJSONObject("administratoDTO");
-                    JSONObject company  = jsonObject.getJSONObject("companyDTO");
-                    String first_name = administrator.getString("firstName");
-                    // JSONObject administratorJsonObject = jsonObject.getJSONObject()
-                    String statusCode = jsonObject.getString("statusCode");
+                  // JSONObject administratorJsonObject = jsonObject.getJSONObject()
+                    String statusCode = jsonObject.getString("statusCode").toString();
                     //String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
                     String message = jsonObject.getString("message");
-                    if (statusCode == "0")
+                    Log.i("Ygritte", message);
+                    if (Integer.parseInt(statusCode) == 0)
                     {
 
                         showToast("Login Failed");
 
                     }
-                    else
+                    else if(Integer.parseInt(statusCode) == 100)
+                    {
+                        String userType = jsonObject.getString("userType").toString();
+
+                        if(jsonObject.getString("userType").equals("Administrator"))//userType == "Administrator")
+                        {
+                            JSONObject administrator = jsonObject.getJSONObject("administratoDTO");
+                            JSONObject company = jsonObject.getJSONObject("companyDTO");
+                            final String first_name = administrator.getString("firstName");
+
+                            final String administratorDTO = jsonObject.getJSONObject("administratoDTO").toString();
+                            final String companyDTO = jsonObject.getJSONObject("companyDTO").toString();
+
+
+
+                            showToast("Login Success " + statusCode + " My Name is : " + first_name);
+
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    Intent intent = new Intent(LoginActivity.this, MainAdmin.class);
+                                    intent.putExtra("AdminDTO", administratorDTO);
+                                    intent.putExtra("CompanyDTO", companyDTO);
+
+                                    startActivity(intent);
+                                }
+                            }, 1000);
+                        }
+                        else if (jsonObject.getString("userType").equals("Technician"))//userType == "Technician")
+                        {
+                            showToast("Login Success for Technician, StatusCode: " + statusCode );
+
+                        }
+                        else if (jsonObject.getString("userType").equals("User"))//userType == "User")
+                        {
+                            showToast("Login Success for User, StatusCode: " + statusCode );
+
+                        }
+
+
+
+
+                    }/*
+                    else if(statusCode != "0" && userType == "Technician")
                     {
                         showToast("Login Success "+statusCode+" My Name is : "+first_name);
 
@@ -133,10 +178,24 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         },1000);
 
-
-
-
                     }
+                    else  if(statusCode != "0" && userType == "User")
+                    {
+                        showToast("Login Success "+statusCode+" My Name is : "+first_name);
+
+
+
+
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                Intent intent = new Intent (LoginActivity.this, MainAdmin.class);
+                                startActivity(intent);
+                            }
+                        },1000);
+
+                    }*/
                     //String breakPoint = jsonObject.ge
                     //ResponseDTO dto = new ResponseDTO(res);
                     //Your code goes here
@@ -188,6 +247,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         moveTaskToBack(true);
+    }
+    public void OnClickPasswordRecovery(View v)
+    {
+        Intent intent = new Intent(this, PasswordRecovery.class);
+        startActivity(intent);
     }
 
     public void onLoginSuccess() {

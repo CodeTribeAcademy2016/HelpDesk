@@ -13,7 +13,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                ````
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,32 +22,18 @@
             android:name=".ProfileUpdate"
             android:label="Profile Update" />
         <activity
-            android:name=".LogCall"
+            android:name=".helpdeskuser.LogCall"
             android:label="Call Log" />
         <activity
             android:name=".helpdeskadmin.MainAdmin"
             android:label="@string/title_activity_main_admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".helpdeskadmin.Admin_AssignmentTab"
-            android:label="@string/title_activity_admin__assignment_tab"
+            android:name=".helpdesktech.TechMain"
+            android:label="@string/title_activity_tech_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".helpdeskadmin.Admin_CallLogTab"
-            android:label="@string/title_activity_admin__call_log_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".helpdeskadmin.Admin_TechnicianTab"
-            android:label="@string/title_activity_admin__technician_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".helpdeskadmin.Admin_ClientTab"
-            android:label="@string/title_activity_admin__client_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".helpdeskadmin.Admin_UserTab"
-            android:label="@string/title_activity_admin__user_tab"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".PasswordRecovery" />
+        <activity android:name=".RegisterCompany"></activity>
     </application>
 
 </manifest>
