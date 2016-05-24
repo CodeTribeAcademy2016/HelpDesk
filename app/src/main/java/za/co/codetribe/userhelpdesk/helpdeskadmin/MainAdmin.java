@@ -18,6 +18,10 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
+import za.co.codetribe.userhelpdesk.ChangePassword;
+import za.co.codetribe.userhelpdesk.LoginActivity;
+import za.co.codetribe.userhelpdesk.Profile;
+import za.co.codetribe.userhelpdesk.ProfileUpdate;
 import za.co.codetribe.userhelpdesk.R;
 import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 
@@ -126,10 +130,21 @@ public class MainAdmin extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            // Handle the view profile
+
+            Intent intent = new Intent(MainAdmin.this, Profile.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_gallery) {
 
+            // Handle the profile update
+            Intent intent = new Intent(MainAdmin.this,ProfileUpdate.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_slideshow) {
+
+            Intent intent = new Intent(MainAdmin.this,ChangePassword.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 

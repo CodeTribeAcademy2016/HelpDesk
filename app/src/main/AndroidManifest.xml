@@ -33,7 +33,12 @@
             android:label="@string/title_activity_tech_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PasswordRecovery" />
-        <activity android:name=".RegisterCompany"></activity>
+        <activity android:name=".RegisterCompany" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>

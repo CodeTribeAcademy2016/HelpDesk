@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                   // JSONObject administratorJsonObject = jsonObject.getJSONObject()
                     String statusCode = jsonObject.getString("statusCode").toString();
                     //String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
-                    String userName = jsonObject.getJSONObject("administratoDTO").getString("firstName");
+                    //String userName = jsonObject.getJSONObject("administratoDTO").getString("firstName");
                     String message = jsonObject.getString("message");
 
                     Log.i("Ygritte", message);
@@ -126,7 +126,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (Integer.parseInt(statusCode) == 0)
                     {
 
-                        showToast("Login Failed");
+                        //showToast("Login Failed");
+                        onLoginFailed();
 
                     }
                     else if(Integer.parseInt(statusCode) == 100)
@@ -149,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                            showToast("Login Success " + statusCode + " My Name is : " + userName.toString());
+                            showToast("Login Success " + statusCode + " My Name is : " );//+ userName.toString());
 
                             handler.postDelayed(new Runnable() {
                                 @Override

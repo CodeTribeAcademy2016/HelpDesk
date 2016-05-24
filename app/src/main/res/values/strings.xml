@@ -7,4 +7,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="title_activity_main_admin">MainAdmin</string>
     <string name="title_activity_tech_main">TechMain</string>
+    <string name="title_activity_view_profile">Profile</string>
+    <string name="title_activity_profile">Profile</string>
 </resources>
