@@ -1,5 +1,6 @@
 package za.co.codetribe.userhelpdesk.helpdeskadmin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,9 +19,13 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import za.co.codetribe.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 
 public class MainAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    AdministratorDTO administratorDTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,10 @@ public class MainAdmin extends AppCompatActivity
         setContentView(R.layout.activity_main_admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,29 +49,12 @@ public class MainAdmin extends AppCompatActivity
 
 
 
-        String administratorDTO = getIntent().getExtras().getString("AdminDTO");
-        String companyDTO = getIntent().getExtras().getString("CompanyDTO");
+       //administratorDTO = (AdministratorDTO) getIntent().getSerializableExtra("AdministratorDTO");
 
 
 
-        try {
 
-            JSONObject objAdmin = new JSONObject(administratorDTO);
-            JSONObject objCompany = new JSONObject(companyDTO);
 
-            Log.d("My App", objAdmin.toString());
-            Log.d("My App", objCompany.toString());
-
-            TextView profileName = (TextView) findViewById(R.id.txtProfileName);
-            profileName.setText(objAdmin.getString("firstName").toString() + " " + objAdmin.getString("lastName").toString());
-
-            TextView profileEmail = (TextView) findViewById(R.id.txtProfileEmail);
-            profileEmail.setText("Email.....");
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + t + "\"");
-
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,8 +62,26 @@ public class MainAdmin extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        TextView name = (TextView)header.findViewById(R.id.txtProfileName);
+        TextView email = (TextView)header.findViewById(R.id.txtProfileEmail);
+        final String jsonString = intent.getStringExtra("jsonObject");
+
+        try {
+            JSONObject jObj = new JSONObject(jsonString);
+            name.setText(jObj.getJSONObject("administratoDTO").getString("firstName") + " " + jObj.getJSONObject("administratoDTO").getString("lastName"));
+            email.setText(jObj.getJSONObject("administratoDTO").getString("email"));
+        }
+        catch (Exception e)
+        {
+
+        }
+        //name.setText("Hosea");
+        //email.setText(administratorDTO.getEmail().toString());
 
 
 
@@ -132,27 +142,6 @@ public class MainAdmin extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        String administratorDTO = getIntent().getExtras().getString("AdminDTO");
-        String companyDTO = getIntent().getExtras().getString("CompanyDTO");
-
-        try {
-
-            JSONObject objAdmin = new JSONObject(administratorDTO);
-            JSONObject objCompany = new JSONObject(companyDTO);
-
-            Log.d("My App", objAdmin.toString());
-            Log.d("My App", objCompany.toString());
-
-            TextView profileName = (TextView) findViewById(R.id.txtProfileName);
-            profileName.setText(objAdmin.getString("firstName").toString() + " " + objAdmin.getString("lastName").toString());
-
-            TextView profileEmail = (TextView) findViewById(R.id.txtProfileEmail);
-            profileEmail.setText(objAdmin.getString("email").toString());
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + t + "\"");
-
-        }
         return true;
     }
 }

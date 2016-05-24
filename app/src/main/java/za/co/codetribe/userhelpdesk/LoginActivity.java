@@ -1,6 +1,7 @@
 package za.co.codetribe.userhelpdesk;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
 import za.co.codetribe.userhelpdesk.helpdeskuser.HomeActivity;
 import za.co.codetribe.userhelpdesk.utils.Constants;
@@ -65,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         String user_email = emailText.getText().toString();
         final String password = passwordText.getText().toString();
 
+
         String json_payload = "";
         Log.i("Ygritte", user_email);
 
@@ -91,10 +94,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 try
                 {
+                    //SharedPreferences
+
                     Log.i("Ygritte", Constants.helpDeskUrl);
                     Log.i("Ygritte", Constants.helpDeskUrl+"?JSON="+json_pay);
 
                     String res = helpOkHttp.post(Constants.helpDeskUrl+"?JSON="+json_pay, json_pay);
+
                     /*
                     * {"administratoDTO":
                     *     {"administratorID":1,"firstName":"Tshego","lastName":"Masilo","email":"tshego.masilo@absa.co.za","telephoneNo":"0128406110","cellNo":"0839586412","password":"Password","companyID":1,"activeFlag":false}
@@ -103,15 +109,20 @@ public class LoginActivity extends AppCompatActivity {
                     *     "message":"Administrator has login successfully",
                     *     "requestType":0}
                     * */
-                    JSONObject jsonObject = new JSONObject(res.trim());
+                    final JSONObject jsonObject = new JSONObject(res.trim());
                     Log.i("Ygritte", res);
 
 
                   // JSONObject administratorJsonObject = jsonObject.getJSONObject()
                     String statusCode = jsonObject.getString("statusCode").toString();
                     //String TelephoneNo = jsonObject.getJSONObject("administratoDTO").getString("telephoneNo");
+                    String userName = jsonObject.getJSONObject("administratoDTO").getString("firstName");
                     String message = jsonObject.getString("message");
+
                     Log.i("Ygritte", message);
+                    //Log.i("Ygritte", AdminID.toString());
+
+
                     if (Integer.parseInt(statusCode) == 0)
                     {
 
@@ -124,25 +135,30 @@ public class LoginActivity extends AppCompatActivity {
 
                         if(jsonObject.getString("userType").equals("Administrator"))//userType == "Administrator")
                         {
-                            JSONObject administrator = jsonObject.getJSONObject("administratoDTO");
-                            JSONObject company = jsonObject.getJSONObject("companyDTO");
-                            final String first_name = administrator.getString("firstName");
+                            //final AdministratorDTO Administrator = new AdministratorDTO();
 
-                            final String administratorDTO = jsonObject.getJSONObject("administratoDTO").toString();
-                            final String companyDTO = jsonObject.getJSONObject("companyDTO").toString();
+                            //Integer adminID = jsonObject.getJSONObject("administratorDTO").getInt("administratorID");
+
+                            /*Administrator.setAdministratorID(jsonObject.getJSONObject("administratorDTO").getInt("administratorID"));
+                            Administrator.setFirstName(jsonObject.getJSONObject("administratoDTO").getString("firstName"));
+                            Administrator.setLastName(jsonObject.getJSONObject("administratoDTO").getString("lastName"));
+                            Administrator.setCellNo(jsonObject.getJSONObject("administratorDTO").getString("cellNo"));
+                            Administrator.setPassword(jsonObject.getJSONObject("administratorDTO").getString("password"));
+                            Administrator.setCompanyID(jsonObject.getJSONObject("administratorDTO").getInt("companyID"));
+                            Administrator.setActiveFlag(jsonObject.getJSONObject("administratorDTO").getBoolean("activeFlag"));*/
 
 
 
-                            showToast("Login Success " + statusCode + " My Name is : " + first_name);
+                            showToast("Login Success " + statusCode + " My Name is : " + userName.toString());
 
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
 
                                     Intent intent = new Intent(LoginActivity.this, MainAdmin.class);
-                                    intent.putExtra("AdminDTO", administratorDTO);
-                                    intent.putExtra("CompanyDTO", companyDTO);
-
+                                    intent.putExtra("jsonObject", jsonObject.toString());
+                                    //intent.putExtra("administratorDTO", Administrator);
+                                    //intent.putExtra("CompanyDTO", companyDTO);
                                     startActivity(intent);
                                 }
                             }, 1000);
