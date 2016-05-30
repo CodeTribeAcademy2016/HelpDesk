@@ -1,4 +1,4 @@
-package za.co.codetribe.userhelpdesk.helpdeskadmin.adapterAdmin;
+package za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 /**
- * Created by CodeTribe1 on 5/25/2016.
+ * Created by User on 5/30/2016.
  */
 public class SlidingTabStrip extends LinearLayout {
-
 
     private static final int DEFAULT_BOTTOM_BORDER_THICKNESS_DIPS = 0;
     private static final byte DEFAULT_BOTTOM_BORDER_COLOR_ALPHA = 0x26;

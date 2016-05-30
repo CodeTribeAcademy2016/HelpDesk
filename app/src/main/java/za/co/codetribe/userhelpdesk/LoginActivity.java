@@ -27,19 +27,9 @@ import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
 public class LoginActivity extends AppCompatActivity {
 
 
-
-
-    /*EditText emailText = (EditText) findViewById(R.id.input_email) ;
-    EditText passwordText = (EditText) findViewById(R.id.input_password);
-    Button loginButton = (Button)findViewById(R.id.btn_login);*/
-
     @Bind(R.id.input_email) EditText emailText;
     @Bind(R.id.input_password) EditText passwordText;
     @Bind(R.id.btn_login) Button loginButton;
-
-    TextView signupLink;
-
-
     Handler handler = new Handler(Looper.getMainLooper());
 
 
@@ -94,8 +84,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 try
                 {
-                    //SharedPreferences
-
                     Log.i("Ygritte", Constants.helpDeskUrl);
                     Log.i("Ygritte", Constants.helpDeskUrl+"?JSON="+json_pay);
 
@@ -176,46 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
 
-
-
-                    }/*
-                    else if(statusCode != "0" && userType == "Technician")
-                    {
-                        showToast("Login Success "+statusCode+" My Name is : "+first_name);
-
-
-
-
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                Intent intent = new Intent (LoginActivity.this, MainAdmin.class);
-                                startActivity(intent);
-                            }
-                        },1000);
-
                     }
-                    else  if(statusCode != "0" && userType == "User")
-                    {
-                        showToast("Login Success "+statusCode+" My Name is : "+first_name);
-
-
-
-
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                Intent intent = new Intent (LoginActivity.this, MainAdmin.class);
-                                startActivity(intent);
-                            }
-                        },1000);
-
-                    }*/
-                    //String breakPoint = jsonObject.ge
-                    //ResponseDTO dto = new ResponseDTO(res);
-                    //Your code goes here
                     Log.i("Tshego ;)",res);
 
 

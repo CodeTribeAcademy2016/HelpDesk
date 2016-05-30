@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,17 +18,15 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import za.co.codetribe.userhelpdesk.ChangePassword;
-import za.co.codetribe.userhelpdesk.LoginActivity;
 import za.co.codetribe.userhelpdesk.Profile;
 import za.co.codetribe.userhelpdesk.ProfileUpdate;
 import za.co.codetribe.userhelpdesk.R;
-import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 
 public class MainAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    AdministratorDTO administratorDTO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,27 +36,6 @@ public class MainAdmin extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-
-
-       //administratorDTO = (AdministratorDTO) getIntent().getSerializableExtra("AdministratorDTO");
-
-
-
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -86,6 +62,7 @@ public class MainAdmin extends AppCompatActivity
         }
         //name.setText("Hosea");
         //email.setText(administratorDTO.getEmail().toString());
+
 
 
 

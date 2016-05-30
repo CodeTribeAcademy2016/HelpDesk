@@ -1,4 +1,4 @@
-package za.co.codetribe.userhelpdesk.helpdeskadmin.adapterAdmin;
+package za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -16,10 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by CodeTribe1 on 5/25/2016.
+ * Created by User on 5/30/2016.
  */
 public class SlidingTabLayout extends HorizontalScrollView {
-
 
     /**
      * Allows complete control over the colors drawn in the tab layout. Set with

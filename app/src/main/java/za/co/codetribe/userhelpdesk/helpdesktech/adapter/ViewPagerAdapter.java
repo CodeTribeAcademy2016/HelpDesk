@@ -9,7 +9,7 @@ import za.co.codetribe.userhelpdesk.helpdesktech.Tab2;
 import za.co.codetribe.userhelpdesk.helpdesktech.Tab3;
 
 /**
- * Created by kgundula on 16/03/21.
+ * Created by Tshego on 16/03/21.
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

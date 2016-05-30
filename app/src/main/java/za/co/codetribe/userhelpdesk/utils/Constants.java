@@ -5,15 +5,15 @@ package za.co.codetribe.userhelpdesk.utils;
  */
 public class Constants {
 
-    public static String loginRequestType = "104";
+
     public static String requestType = "requestType";
     public static String email = "email";
     public static String password = "password";
 
     public static String helpDeskUrl = "http://146.64.85.44:8080/hda/Admin";
 
-
-    public static final int REGISTER_ADMIN = 100;       //Done
+    public static String loginRequestType = "104";
+    public static String REGISTER_ADMIN = "100";       //Done
     public static final int GET_ADMIN_PROFILE = 101;    //Done
     public static final int ADMIN_PROFILE_UPDATE = 102; //Done
     public static final int GET_ADMIN_LIST = 103;       //Done

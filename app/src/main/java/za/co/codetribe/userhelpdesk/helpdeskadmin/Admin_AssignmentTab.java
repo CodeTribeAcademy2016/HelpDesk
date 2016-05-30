@@ -1,25 +1,26 @@
 package za.co.codetribe.userhelpdesk.helpdeskadmin;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import za.co.codetribe.userhelpdesk.R;
 
 
-public class Admin_AssignmentTab extends AppCompatActivity {
+public class Admin_AssignmentTab extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin__assignment_tab);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        View v = inflater.inflate(R.layout.activity_admin__assignment_tab, container, false);
+
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,6 +28,10 @@ public class Admin_AssignmentTab extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        return v;
+
+
     }
+
 
 }
