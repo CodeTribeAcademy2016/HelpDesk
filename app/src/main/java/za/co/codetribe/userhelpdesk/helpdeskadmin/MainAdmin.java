@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,11 +24,15 @@ import za.co.codetribe.userhelpdesk.ChangePassword;
 import za.co.codetribe.userhelpdesk.Profile;
 import za.co.codetribe.userhelpdesk.ProfileUpdate;
 import za.co.codetribe.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.SlidingTabLayout;
+import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.TabFragment;
+import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.ViewPagerAdapter;
 
 public class MainAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
 
 
     @Override
@@ -34,6 +41,12 @@ public class MainAdmin extends AppCompatActivity
         setContentView(R.layout.activity_main_admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+
 
         Intent intent = getIntent();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -45,25 +58,21 @@ public class MainAdmin extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header=navigationView.getHeaderView(0);
+        View header = navigationView.getHeaderView(0);
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-        TextView name = (TextView)header.findViewById(R.id.txtProfileName);
-        TextView email = (TextView)header.findViewById(R.id.txtProfileEmail);
+        TextView name = (TextView) header.findViewById(R.id.txtProfileName);
+        TextView email = (TextView) header.findViewById(R.id.txtProfileEmail);
         final String jsonString = intent.getStringExtra("jsonObject");
 
         try {
             JSONObject jObj = new JSONObject(jsonString);
             name.setText(jObj.getJSONObject("administratoDTO").getString("firstName") + " " + jObj.getJSONObject("administratoDTO").getString("lastName"));
             email.setText(jObj.getJSONObject("administratoDTO").getString("email"));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         //name.setText("Hosea");
         //email.setText(administratorDTO.getEmail().toString());
-
-
 
 
     }
@@ -115,12 +124,12 @@ public class MainAdmin extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
             // Handle the profile update
-            Intent intent = new Intent(MainAdmin.this,ProfileUpdate.class);
+            Intent intent = new Intent(MainAdmin.this, ProfileUpdate.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
-            Intent intent = new Intent(MainAdmin.this,ChangePassword.class);
+            Intent intent = new Intent(MainAdmin.this, ChangePassword.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_manage) {

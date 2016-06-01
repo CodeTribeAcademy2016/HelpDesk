@@ -3,4 +3,8 @@
     <color name="ColorPrimary">#e62117</color>
     <color name="ColorPrimaryDark">#c31c13</color>
     <color name="tabsScrollColor">#8a140e</color>
+
+    <color name="black">#212121</color>
+    <color name="orange">#FF9800</color>
+    <color name="white">#FFF</color>
 </resources>
