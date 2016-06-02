@@ -2,11 +2,8 @@ package za.co.codetribe.userhelpdesk.helpdeskadmin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,9 +21,7 @@ import za.co.codetribe.userhelpdesk.ChangePassword;
 import za.co.codetribe.userhelpdesk.Profile;
 import za.co.codetribe.userhelpdesk.ProfileUpdate;
 import za.co.codetribe.userhelpdesk.R;
-import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.SlidingTabLayout;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.TabFragment;
-import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.ViewPagerAdapter;
 
 public class MainAdmin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
