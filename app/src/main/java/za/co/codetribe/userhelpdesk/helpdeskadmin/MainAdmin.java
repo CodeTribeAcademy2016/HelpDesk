@@ -28,7 +28,7 @@ public class MainAdmin extends AppCompatActivity
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-
+    String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,9 @@ public class MainAdmin extends AppCompatActivity
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
         TextView name = (TextView) header.findViewById(R.id.txtProfileName);
         TextView email = (TextView) header.findViewById(R.id.txtProfileEmail);
-        final String jsonString = intent.getStringExtra("jsonObject");
+        if (intent.getExtras() != null) {
+            jsonString = intent.getStringExtra("jsonObject");
+        }
 
         try {
             JSONObject jObj = new JSONObject(jsonString);
@@ -112,8 +114,12 @@ public class MainAdmin extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the view profile
-
-            Intent intent = new Intent(MainAdmin.this, Profile.class);
+            Intent intent = getIntent();
+            intent = new Intent(MainAdmin.this, Profile.class);
+            //final String jsonString = intent.getStringExtra("jsonObject");
+            if ( jsonString !=null ) {
+                intent.putExtra("jsonObject", jsonString.toString());
+            }
             startActivity(intent);
 
         } else if (id == R.id.nav_gallery) {

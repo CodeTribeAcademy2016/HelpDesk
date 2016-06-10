@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,6 +9,7 @@
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="za.co.codetribe.userhelpdesk.Profile"
     tools:showIn="@layout/activity_profile">
@@ -20,6 +22,7 @@
         android:layout_margin="16dp">
 
         <ImageView
+            android:layout_marginTop="16dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="32dp"
@@ -32,6 +35,7 @@
             android:text="Full Name"
             android:layout_marginBottom="8dp"/>
         <TextView
+            android:id="@+id/pName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
@@ -45,6 +49,7 @@
             android:text="Email"
             android:layout_marginBottom="8dp"/>
         <TextView
+            android:id="@+id/pEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
@@ -58,6 +63,7 @@
             android:text="Telephone No"
             android:layout_marginBottom="8dp"/>
         <TextView
+            android:id="@+id/pTelNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
@@ -70,6 +76,7 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:text="Cellphone No"/>
         <TextView
+            android:id="@+id/pCellNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"

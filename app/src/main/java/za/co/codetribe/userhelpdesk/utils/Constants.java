@@ -9,6 +9,8 @@ public class Constants {
     public static String requestType = "requestType";
     public static String email = "email";
     public static String password = "password";
+    public static String administratorID, assignmentID, callLogID,callRateID,callTypeID,
+            companyID, clientID, statusID, technicianID,technicianResponseID, userID;
 
     public static String helpDeskUrl = "http://146.64.85.44:8080/hda/Admin";
 

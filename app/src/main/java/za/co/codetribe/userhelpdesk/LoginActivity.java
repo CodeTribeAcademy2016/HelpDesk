@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                            showToast("Login Success " + statusCode + " My Name is : " );//+ userName.toString());
+                            showToast("Login Success " );//+ userName.toString());
 
                             handler.postDelayed(new Runnable() {
                                 @Override
