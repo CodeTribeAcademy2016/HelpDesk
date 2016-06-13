@@ -20,6 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
+import za.co.codetribe.userhelpdesk.helpdesktech.TechMain;
 import za.co.codetribe.userhelpdesk.helpdeskuser.HomeActivity;
 import za.co.codetribe.userhelpdesk.utils.Constants;
 import za.co.codetribe.userhelpdesk.utils.HelpOkHttp;
@@ -154,6 +155,20 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else if (jsonObject.getString("userType").equals("Technician"))//userType == "Technician")
                         {
+                            showToast("Login Success " );//+ userName.toString());
+
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    Intent intent = new Intent(LoginActivity.this, TechMain.class);
+                                    intent.putExtra("jsonObject", jsonObject.toString());
+                                    //intent.putExtra("administratorDTO", Administrator);
+                                    //intent.putExtra("CompanyDTO", companyDTO);
+                                    startActivity(intent);
+                                }
+                            }, 1000);
+
                             showToast("Login Success for Technician, StatusCode: " + statusCode );
 
                         }

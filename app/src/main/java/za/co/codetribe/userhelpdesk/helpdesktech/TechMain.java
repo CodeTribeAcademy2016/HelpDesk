@@ -1,5 +1,6 @@
 package za.co.codetribe.userhelpdesk.helpdesktech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,16 +13,59 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import za.co.codetribe.userhelpdesk.R;
 
 public class TechMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    String jsonString;
+
+    ListView list;
+    String string ="2013-04-26 08:34:55.705";
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Date date = new Date();
+
+    String[] itemname ={
+            "Ticket No : 123",
+            "Ticket No : 45367",
+            "Ticket No : 129088"
+    };
+
+    Integer[] imgid={
+            R.drawable.faulty_air_con,
+            R.drawable.faulty_monitor,
+            R.drawable.electrical_faulty_plug,
+
+    };
+    String[] Status ={
+            "Customer Unavailable",
+            "Waiting for third party",
+            "Work in progress"
+    };
+    String[] loggedDate ={
+            "2016-03-14 08:34:55",
+            "2016-03-15 13:17:00",
+            "2016-03-17 10:00:00"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tech_main);
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,6 +78,7 @@ public class TechMain extends AppCompatActivity
             }
         });
 
+        Intent intent = getIntent();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -42,6 +87,54 @@ public class TechMain extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid, Status,loggedDate);
+
+
+        list = (ListView)findViewById(R.id.list);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                if (position == 0) {
+                    Intent int0 = new Intent(getApplicationContext(), CallDetails.class);
+                    startActivity(int0);
+                }
+
+                else if (position == 1) {
+                    Intent int1 = new Intent(getApplicationContext(), CallDetails.class);
+                    startActivity(int1);
+                }
+                else if (position == 2) {
+                    Intent int2 = new Intent(getApplicationContext(), CallDetails.class);
+                    startActivity(int2);
+                }
+
+                else if (position == 3) {
+                    Intent int3 = new Intent(getApplicationContext(),CallDetails.class);
+                    startActivity(int3);
+                }
+            }
+        });
+
+
+        View header = navigationView.getHeaderView(0);
+
+        TextView name = (TextView) header.findViewById(R.id.txtProfileName);
+        TextView email = (TextView) header.findViewById(R.id.txtProfileEmail);
+
+        if (intent.getExtras() != null) {
+            jsonString = intent.getStringExtra("jsonObject");
+        }
+
+        try {
+            JSONObject jObj = new JSONObject(jsonString);
+            name.setText(jObj.getJSONObject("technicianDTO").getString("firstName") + " " + jObj.getJSONObject("technicianDTO").getString("lastName"));
+            email.setText(jObj.getJSONObject("technicianDTO").getString("email"));
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
