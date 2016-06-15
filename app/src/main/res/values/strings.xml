@@ -9,4 +9,5 @@
     <string name="title_activity_tech_main">TechMain</string>
     <string name="title_activity_view_profile">Profile</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_tech_profile">TechProfile</string>
 </resources>

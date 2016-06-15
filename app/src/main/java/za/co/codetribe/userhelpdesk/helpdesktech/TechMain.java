@@ -23,7 +23,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import za.co.codetribe.userhelpdesk.Profile;
 import za.co.codetribe.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.helpdeskadmin.MainAdmin;
 
 public class TechMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -90,7 +92,7 @@ public class TechMain extends AppCompatActivity
         CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid, Status,loggedDate);
 
 
-        list = (ListView)findViewById(R.id.list);
+       /* list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,7 +118,7 @@ public class TechMain extends AppCompatActivity
                     startActivity(int3);
                 }
             }
-        });
+        });*/
 
 
         View header = navigationView.getHeaderView(0);
@@ -176,7 +178,13 @@ public class TechMain extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent intent = getIntent();
+            intent = new Intent(TechMain.this, TechProfile.class);
+            //final String jsonString = intent.getStringExtra("jsonObject");
+            if ( jsonString !=null ) {
+                intent.putExtra("jsonObject", jsonString.toString());
+            }
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

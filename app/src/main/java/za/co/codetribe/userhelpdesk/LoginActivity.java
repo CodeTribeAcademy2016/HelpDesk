@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -136,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                             Administrator.setPassword(jsonObject.getJSONObject("administratorDTO").getString("password"));
                             Administrator.setCompanyID(jsonObject.getJSONObject("administratorDTO").getInt("companyID"));
                             Administrator.setActiveFlag(jsonObject.getJSONObject("administratorDTO").getBoolean("activeFlag"));*/
+
 
 
 
