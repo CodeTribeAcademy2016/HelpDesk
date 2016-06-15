@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.input_password) EditText passwordText;
     @Bind(R.id.btn_login) Button loginButton;
     Handler handler = new Handler(Looper.getMainLooper());
+    AdministratorDTO Administrator;
 
 
     @Override
@@ -124,19 +125,24 @@ public class LoginActivity extends AppCompatActivity {
 
                         if(jsonObject.getString("userType").equals("Administrator"))//userType == "Administrator")
                         {
-                            //final AdministratorDTO Administrator = new AdministratorDTO();
+                            Administrator = new AdministratorDTO();
+                            if(jsonObject != null) {
 
-                            //Integer adminID = jsonObject.getJSONObject("administratorDTO").getInt("administratorID");
-
-                            /*Administrator.setAdministratorID(jsonObject.getJSONObject("administratorDTO").getInt("administratorID"));
-                            Administrator.setFirstName(jsonObject.getJSONObject("administratoDTO").getString("firstName"));
-                            Administrator.setLastName(jsonObject.getJSONObject("administratoDTO").getString("lastName"));
-                            Administrator.setCellNo(jsonObject.getJSONObject("administratorDTO").getString("cellNo"));
-                            Administrator.setPassword(jsonObject.getJSONObject("administratorDTO").getString("password"));
-                            Administrator.setCompanyID(jsonObject.getJSONObject("administratorDTO").getInt("companyID"));
-                            Administrator.setActiveFlag(jsonObject.getJSONObject("administratorDTO").getBoolean("activeFlag"));*/
+                                String fname = jsonObject.getJSONObject("administratoDTO").getString("firstName");
+                                String adminID = jsonObject.getJSONObject("administratorDTO").getInt("administratorID") + "";
 
 
+                                Administrator.setFirstName(fname.toString());
+                                Administrator.setAdministratorID(Integer.parseInt(adminID));
+                                Administrator.setLastName(jsonObject.getJSONObject("administratoDTO").getString("lastName").toString());
+                                Administrator.setCellNo(jsonObject.getJSONObject("administratorDTO").getString("cellNo").toString());
+                                Administrator.setPassword(jsonObject.getJSONObject("administratorDTO").getString("password").toString());
+                                Administrator.setCompanyID(jsonObject.getJSONObject("administratorDTO").getInt("companyID"));
+                                Administrator.setActiveFlag(jsonObject.getJSONObject("administratorDTO").getBoolean("activeFlag"));
+
+                                Log.i("TshegoDTO", Administrator.getFirstName().toString());
+
+                            }
 
                             showToast("Login Success " );//+ userName.toString());
 
