@@ -114,8 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (Integer.parseInt(statusCode) == 0)
                     {
 
-                        //showToast("Login Failed");
-                        onLoginFailed();
+                        showToast("Login Failed");
+                        //onLoginFailed();
 
                     }
                     else if(Integer.parseInt(statusCode) == 100)
