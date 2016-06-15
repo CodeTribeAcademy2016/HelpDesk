@@ -20,7 +20,7 @@ public class Admin_TechnicianTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        View v = inflater.inflate(R.layout.activity_admin__assignment_tab, container, false);
+        View v = inflater.inflate(R.layout.activity_admin__technician_tab, container, false);
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
