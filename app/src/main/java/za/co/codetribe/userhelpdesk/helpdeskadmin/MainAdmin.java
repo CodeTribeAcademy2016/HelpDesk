@@ -18,9 +18,12 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import za.co.codetribe.userhelpdesk.ChangePassword;
+import za.co.codetribe.userhelpdesk.LoginActivity;
 import za.co.codetribe.userhelpdesk.Profile;
 import za.co.codetribe.userhelpdesk.ProfileUpdate;
 import za.co.codetribe.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
+import za.co.codetribe.userhelpdesk.dto.CompanyDTO;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.AdminAdapter.TabFragment;
 
 public class MainAdmin extends AppCompatActivity
@@ -29,6 +32,8 @@ public class MainAdmin extends AppCompatActivity
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     String jsonString;
+    AdministratorDTO Administrator;
+    CompanyDTO Company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,10 @@ public class MainAdmin extends AppCompatActivity
         mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
 
 
-        Intent intent = getIntent();
+
+        Administrator =  (AdministratorDTO) getIntent().getSerializableExtra("administratorDTO");
+        Company = (CompanyDTO) getIntent().getSerializableExtra("companyDTO");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,7 +65,17 @@ public class MainAdmin extends AppCompatActivity
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
         TextView name = (TextView) header.findViewById(R.id.txtProfileName);
         TextView email = (TextView) header.findViewById(R.id.txtProfileEmail);
-        if (intent.getExtras() != null) {
+
+
+
+        if(Administrator != null)
+        {
+
+            name.setText(Administrator.getFirstName().toString() +" "+ Administrator.getLastName().toString());
+            email.setText(Administrator.getEmail().toString());
+
+        }
+        /*if (intent.getExtras() != null) {
             jsonString = intent.getStringExtra("jsonObject");
         }
 
@@ -67,9 +85,7 @@ public class MainAdmin extends AppCompatActivity
             email.setText(jObj.getJSONObject("administratoDTO").getString("email"));
         } catch (Exception e) {
 
-        }
-        //name.setText("Hosea");
-        //email.setText(administratorDTO.getEmail().toString());
+        }*/
 
 
     }
@@ -116,16 +132,26 @@ public class MainAdmin extends AppCompatActivity
             // Handle the view profile
             Intent intent = getIntent();
             intent = new Intent(MainAdmin.this, Profile.class);
-            //final String jsonString = intent.getStringExtra("jsonObject");
+            if(Administrator != null)
+            {
+                intent.putExtra("administratorDTO",Administrator);
+                intent.putExtra("companyDTO",Company);
+            }
+            /*final String jsonString = intent.getStringExtra("jsonObject");
             if ( jsonString !=null ) {
                 intent.putExtra("jsonObject", jsonString.toString());
-            }
+            }*/
             startActivity(intent);
 
         } else if (id == R.id.nav_gallery) {
 
             // Handle the profile update
             Intent intent = new Intent(MainAdmin.this, ProfileUpdate.class);
+            if(Administrator != null)
+            {
+                intent.putExtra("administratorDTO",Administrator);
+                intent.putExtra("companyDTO",Company);
+            }
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
@@ -137,8 +163,12 @@ public class MainAdmin extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
+
+
         } else if (id == R.id.nav_send) {
 
+            Intent intent = new Intent(MainAdmin.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

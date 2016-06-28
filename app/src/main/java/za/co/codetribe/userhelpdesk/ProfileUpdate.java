@@ -5,15 +5,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
 import za.co.codetribe.userhelpdesk.helpdeskuser.HomeActivity;
 
 public class ProfileUpdate extends AppCompatActivity {
+
+    AdministratorDTO Administrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
+
+        Administrator =  (AdministratorDTO) getIntent().getSerializableExtra("administratorDTO");
+
+        EditText name = (EditText) findViewById(R.id.edt_name);
+        EditText surname = (EditText) findViewById(R.id.edt_surname);
+        EditText telno  = (EditText) findViewById(R.id.edt_tel);
+        EditText celno = (EditText) findViewById(R.id.edt_cellphone);
+
+        if(Administrator != null)
+        {
+            name.setText(Administrator.getFirstName().toString());
+            surname.setText(Administrator.getLastName().toString());
+            telno.setText(Administrator.getTelephoneNo().toString());
+            celno.setText(Administrator.getCellNo().toString());
+        }
     }
 
 

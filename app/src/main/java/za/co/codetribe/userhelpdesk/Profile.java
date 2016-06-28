@@ -12,8 +12,12 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import za.co.codetribe.userhelpdesk.R;
+import za.co.codetribe.userhelpdesk.dto.AdministratorDTO;
+import za.co.codetribe.userhelpdesk.dto.CompanyDTO;
 
 public class Profile extends AppCompatActivity {
+    AdministratorDTO Administrator;
+    CompanyDTO Company;
 
 
     @Override
@@ -28,18 +32,29 @@ public class Profile extends AppCompatActivity {
         TextView Email = (TextView) findViewById(R.id.pEmail);
         TextView TelNo = (TextView) findViewById(R.id.pTelNo);
         TextView CellNo = (TextView) findViewById(R.id.pCellNo);
+        TextView CompanyName = (TextView) findViewById(R.id.pComName);
 
-        Intent intent = getIntent();
-        final String jsonString = intent.getStringExtra("jsonObject");
+
+        /*Intent intent = getIntent();
+        final String jsonString = intent.getStringExtra("jsonObject");*/
+        Administrator =  (AdministratorDTO) getIntent().getSerializableExtra("administratorDTO");
+        Company = (CompanyDTO) getIntent().getSerializableExtra("companyDTO");
 
         try {
-            JSONObject jObj = new JSONObject(jsonString);
-            String dbFullName, dbEmail, dbTelNo, dbCellNo;
+            //JSONObject jObj = new JSONObject(jsonString);
+            String dbFullName, dbEmail, dbTelNo, dbCellNo, dbCompanyName;
 
-            dbFullName = jObj.getJSONObject("administratoDTO").getString("firstName") + " " + jObj.getJSONObject("administratoDTO").getString("lastName");
+            /*dbFullName = jObj.getJSONObject("administratoDTO").getString("firstName") + " " + jObj.getJSONObject("administratoDTO").getString("lastName");
             dbEmail = jObj.getJSONObject("administratoDTO").getString("email");
             dbTelNo = jObj.getJSONObject("administratoDTO").getString("telephoneNo");
-            dbCellNo = jObj.getJSONObject("administratoDTO").getString("cellNo");
+            dbCellNo = jObj.getJSONObject("administratoDTO").getString("cellNo");*/
+            dbFullName = Administrator.getFirstName().toString() + " " + Administrator.getLastName().toString();
+            dbEmail = Administrator.getEmail().toString();
+            dbTelNo = Administrator.getTelephoneNo().toString();
+            dbCellNo = Administrator.getCellNo().toString();
+            dbCompanyName = Company.getCompanyName().toString();
+
+
 
             if (dbFullName.toString() == "")
             {
@@ -59,6 +74,7 @@ public class Profile extends AppCompatActivity {
                 Email.setText(dbEmail.toString());
                 TelNo.setText(dbTelNo.toString());
                 CellNo.setText(dbCellNo.toString());
+                CompanyName.setText(dbCompanyName);
             }
 
 
@@ -74,6 +90,11 @@ public class Profile extends AppCompatActivity {
                         .setAction("Action", null).show();
 
                 Intent intent = new Intent(Profile.this,ProfileUpdate.class);
+                if (Administrator != null && Company != null)
+                {
+                    intent.putExtra("administratorDTO", Administrator);
+                    intent.putExtra("companyDTO",Company);
+                }
                 startActivity(intent);
             }
         });
