@@ -19,7 +19,7 @@ import za.co.codetribe.userhelpdesk.helpdeskadmin.Admin_TechnicianTab;
 import za.co.codetribe.userhelpdesk.helpdeskadmin.Admin_UserTab;
 
 /**
- * Created by User on 6/1/2016.
+ * Created by Tshego Masilo on 6/1/2016.
  */
 public class TabFragment extends Fragment {
 

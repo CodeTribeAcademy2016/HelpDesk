@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="@android:color/white"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/white"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="24dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="za.co.codetribe.userhelpdesk.Profile"
-    tools:showIn="@layout/activity_profile">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".Profile">
+
 
     <LinearLayout
         android:background="@android:color/white"
@@ -80,11 +73,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="0789632587"/>
+            android:text="0789632587"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:text="Company Name"/>
+        <TextView
+            android:id="@+id/pComName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="Absa"
+            android:layout_marginBottom="16dp"/>
 
 
 
     </LinearLayout>
 
-</RelativeLayout>
 </ScrollView>

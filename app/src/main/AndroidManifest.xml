@@ -40,12 +40,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".helpdeskadmin.addUser" />
-        <activity android:name=".helpdesktech.CallDetails" />
-        <activity
-            android:name=".helpdesktech.TechProfile"
-            android:label="@string/title_activity_tech_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".helpdesktech.TechUpdateProfile"></activity>
     </application>
 
 </manifest>

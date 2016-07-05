@@ -9,6 +9,9 @@
     tools:context="za.co.codetribe.userhelpdesk.helpdeskadmin.addUser">
 
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/edtAddUserEmail"
         android:layout_width="match_parent"
@@ -17,6 +20,7 @@
         android:ems="10"
         android:hint="Email:"
         android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
 
 
     <Spinner

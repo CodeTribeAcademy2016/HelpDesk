@@ -9,8 +9,9 @@ public class Constants {
     public static String requestType = "requestType";
     public static String email = "email";
     public static String password = "password";
+    public static String companyID = "companyID";
     public static String administratorID, assignmentID, callLogID,callRateID,callTypeID,
-            companyID, clientID, statusID, technicianID,technicianResponseID, userID;
+             clientID, statusID, technicianID,technicianResponseID, userID;
 
     public static String helpDeskUrl = "http://146.64.85.44:8080/hda/Admin";
 
@@ -45,7 +46,7 @@ public class Constants {
     //functions for administator to client
     public static final int ADD_CLIENT = 170;              //Done
     public static final int DEACTIVATE_CLIENT = 171;       //Done
-    public static final int GET_CLIENTS_LIST = 172;        //Done
+    public static final String GET_CLIENTS_LIST = "172";        //Done
     public static final int GET_CLIENT_DATA = 174;         //Done
     public static final int CLIENT_UPDATE = 175;           //Done
     public static final int GET_USERS_LIST_BY_CLIENTID = 176; //Done
